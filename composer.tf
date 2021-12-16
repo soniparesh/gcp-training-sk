@@ -22,6 +22,7 @@ terraform {
 }
 
 resource "google_composer_environment" "test" {
+  project = var.project
   provider = google-beta
   name   = "composer-dev"
   region = "us-central1"
@@ -89,11 +90,13 @@ resource "google_composer_environment" "test" {
 }
 
 resource "google_compute_network" "test" {
+  project = var.project
   name                    = "composer-test-network"
   auto_create_subnetworks = false
 }
 
 resource "google_compute_subnetwork" "test" {
+  project = var.project
   name          = "composer-test-subnetwork"
   ip_cidr_range = "10.2.0.0/16"
   region        = "us-central1"
@@ -110,6 +113,7 @@ resource "google_compute_subnetwork" "test" {
 }
 
 resource "google_service_account" "test" {
+  project = var.project
   account_id   = "composer-env-sa"
   display_name = "Test Service Account for Composer Environment"
 }
