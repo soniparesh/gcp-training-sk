@@ -114,7 +114,7 @@ resource "google_compute_subnetwork" "test" {
 
 resource "google_service_account" "test" {
   project = var.project
-  account_id   = "composer-env-sa"
+  account_id   = "composer-env-account"
   display_name = "Test Service Account for Composer Environment"
 }
 
