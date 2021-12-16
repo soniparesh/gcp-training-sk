@@ -1,3 +1,25 @@
+# Terraform Provider's
+provider "google" {
+  project = var.project
+  region  = var.region
+  zone    = var.zone
+}
+
+provider "google-beta" {
+  project = var.project
+  region  = var.region
+  zone    = var.zone
+}  
+
+terraform {
+  backend "remote" {
+    organization = "rft-exchange" /*Terraform Cloud - Organization*/
+
+    workspaces {
+      name = "gcp-training-sk" /*Terraform Cloud - Workspace*/
+    }
+  }
+}
 
 resource "google_composer_environment" "test" {
   provider = google-beta
