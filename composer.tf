@@ -119,6 +119,7 @@ resource "google_service_account" "test" {
 }
 
 resource "google_project_iam_member" "composer-worker" {
+  project = var.project
   role   = "roles/composer.worker"
   member = "serviceAccount:${google_service_account.test.email}"
 }
