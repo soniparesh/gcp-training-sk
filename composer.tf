@@ -89,28 +89,28 @@ resource "google_composer_environment" "test" {
   }
 }
 
-resource "google_compute_network" "test" {
-  project = var.project
-  name                    = "composer-test-network"
-  auto_create_subnetworks = false
-}
+#resource "google_compute_network" "test" {
+#  project = var.project
+#  name                    = "composer-test-network"
+#  auto_create_subnetworks = false
+#}
 
-resource "google_compute_subnetwork" "test" {
-  project = var.project
-  name          = "composer-test-subnetwork"
-  ip_cidr_range = "10.2.0.0/16"
-  region        = "us-central1"
-  network       = google_compute_network.test.id
-  private_ip_google_access = true
-  secondary_ip_range {
-    range_name    = "composer-sec-ip-range-pod"
-    ip_cidr_range = "10.3.0.0/16"
-  }
-  secondary_ip_range {
-    range_name    = "composer-sec-ip-range-services"
-    ip_cidr_range = "10.4.0.0/16"
-  }
-}
+#resource "google_compute_subnetwork" "test" {
+#  project = var.project
+#  name          = "composer-test-subnetwork"
+#  ip_cidr_range = "10.2.0.0/16"
+#  region        = "us-central1"
+#  network       = google_compute_network.test.id
+#  private_ip_google_access = true
+#  secondary_ip_range {
+#    range_name    = "composer-sec-ip-range-pod"
+#    ip_cidr_range = "10.3.0.0/16"
+#  }
+#  secondary_ip_range {
+#    range_name    = "composer-sec-ip-range-services"
+#    ip_cidr_range = "10.4.0.0/16"
+#  }
+#}
 
 resource "google_service_account" "test" {
   project = var.project
